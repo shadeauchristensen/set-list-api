@@ -2,13 +2,12 @@ class Artist < ApplicationRecord
   has_many :songs
   belongs_to :record_label
 
-  # #songs method without associations
+  # # songs method without associations
   # def songs
   #   Song.where(artist_id: self.id)
   # end
 
   def average_song_length
-    self.songs.average(:length)
     self.songs.average(:length)
   end
 
