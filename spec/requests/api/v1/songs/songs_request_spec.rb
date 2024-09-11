@@ -120,7 +120,7 @@ RSpec.describe "Songs endpoints" do
 
       expect(data[:errors]).to be_a(Array)
       expect(data[:errors].first[:status]).to eq("404")
-      expect(data[:errors].first[:title]).to eq("Couldn't find Song with 'id'=123489846278")
+      expect(data[:errors].first[:message]).to eq("Couldn't find Song with 'id'=123489846278")
     end
   end
 end
