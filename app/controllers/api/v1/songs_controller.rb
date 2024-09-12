@@ -4,13 +4,55 @@ class Api::V1::SongsController < ApplicationController
   end
 
   def show
-    render json: SongSerializer.format_song(Song.find(params[:id]))
+    begin
+      # happy path
+      render json: SongSerializer.format_song(Song.find(params[:id]))
+    rescue ActiveRecord::RecordNotFound => exception
+      # sad path
+      render json: {
+        errors: [
+          {
+            status: "404",
+            message: exception.message
+          }
+        ]
+      },
+      status: :not_found
+    end
   end
 
   def create
-    song = Song.create!(song_params)
-    render json: song, status: 201
+    begin
+      song = Song.create!(song_params)
+      render json: song, status: 201
+    rescue ActiveRecord::RecordInvalid => error
+      render json: {
+        errors: [
+          {
+            "status": "422", 
+            "message": error.message
+          }
+        ]
+      }, status: 422
+    end
   end
+
+  # Other option for handling errors with #create
+  # def create
+  #   song = Song.new(song_params)
+  #   if song.save
+  #     render json: song, status: :created
+  #   else
+  #     render json: {
+  #       errors: [
+  #         {
+  #           "status": "422", 
+  #           "message": song.errors.full_messages.to_sentence # note we can extract error messages from song object!
+  #         }
+  #       ]
+  #     }, status: 422
+  #   end
+  # end
 
   def update
     song = Song.find(params[:id])

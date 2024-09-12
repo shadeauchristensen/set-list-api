@@ -1,7 +1,12 @@
 require "rails_helper"
 
 RSpec.describe Song, type: :model do
-  it {should belong_to :artist}
+  it { should belong_to :artist }
+  it { should validate_presence_of(:title) }
+  it { should validate_presence_of(:length) }
+  it { should validate_presence_of(:play_count) }
+  it { should validate_numericality_of(:length) }
+  it { should validate_numericality_of(:play_count) }
 
   describe "instance methods" do
     before :each do

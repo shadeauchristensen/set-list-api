@@ -122,5 +122,46 @@ RSpec.describe "Songs endpoints" do
       expect(data[:errors].first[:status]).to eq("404")
       expect(data[:errors].first[:message]).to eq("Couldn't find Song with 'id'=123489846278")
     end
+
+    it "will gracefully handle song creation without required artist ID" do
+      body = 
+        {
+          "title": "Example Song",
+          "length": 12
+        }
+      
+      post "/api/v1/songs", params: body, as: :json
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(422)
+
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      # require 'pry'; binding.pry
+      expect(data[:errors]).to be_a(Array)
+      expect(data[:errors].first[:status]).to eq("422")
+      expect(data[:errors].first[:message]).to include("Validation failed: Artist must exist")
+    end
+
+    it "will return specific error message when required attributes are missing or invalid" do
+      body = 
+        {
+          "artist_id": 1,
+          "title": "Example Song",
+          "length": "12"
+        }
+      
+      post "/api/v1/songs", params: body, as: :json
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(422)
+
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      # require 'pry'; binding.pry
+      expect(data[:errors]).to be_a(Array)
+      expect(data[:errors].first[:status]).to eq("422")
+      expect(data[:errors].first[:message]).to eq("Validation failed: Artist must exist, Play count can't be blank, Play count is not a number")
+    end
   end
 end
