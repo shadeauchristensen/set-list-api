@@ -26,8 +26,8 @@ rtj.songs.create!(title: "Talk to Me", length: 2301, play_count: 2300000)
 caamp.songs.create!(title: "26", length: 940, play_count: 150000)
 caamp.songs.create!(title: "Vagabond", length: 240, play_count: 120000)
 
-jgb.songs.create!(title: "Aint No Bread In The Breadbox", length: 540, play_count: 12000)
-jgb.songs.create!(title: "The Harder They Come", length: 240, play_count: 120000)
+# jgb.songs.create!(title: "Aint No Bread In The Breadbox", length: 540, play_count: 12000)
+# jgb.songs.create!(title: "The Harder They Come", length: 240, play_count: 120000)
 
 billie.songs.create!(title: "bury a friend", length: 340, play_count: 1200000)
 billie.songs.create!(title: "bad guy", length: 240, play_count: 100000)
