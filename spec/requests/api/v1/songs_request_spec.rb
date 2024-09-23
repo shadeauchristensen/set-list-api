@@ -1,6 +1,33 @@
 require 'rails_helper'
 
 describe "Songs API" do
+  describe "as a visitor, require user registration" do
+    before (:each) do
+      Song.create(title: "Wrecking Ball", length: 220, play_count: 3)
+      Song.create(title: "Bad Romance", length: 295, play_count: 5)
+      Song.create(title: "Shake It Off", length: 219, play_count: 2)
+    end
+
+    it "songs index" do
+      get '/api/v1/songs'
+
+      expect(response).to be_successful
+    end
+
+    it "songs show" do
+    end
+
+    it "songs create" do
+    end
+
+    it "songs update" do
+    end
+
+    it "songs delete" do
+    end
+
+  end
+
   it "sends a list of songs" do
     Song.create(title: "Wrecking Ball", length: 220, play_count: 3)
     Song.create(title: "Bad Romance", length: 295, play_count: 5)
