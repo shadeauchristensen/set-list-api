@@ -1,6 +1,8 @@
 class User < ApplicationRecord
     has_secure_password
 
+    enum role: %w(default admin)
+
     before_create :generate_api_token
 
     validates :email, presence: true, uniqueness: true

@@ -11,10 +11,9 @@ Rails.application.routes.draw do
   post "/users/login", to: "users#login"
   resources :users, only: [:new, :create, :show]
 
-
-  get "/api/v1/songs", to: "api/v1/songs#index"
-  get "/api/v1/songs/:id", to: "api/v1/songs#show"
-  post "/api/v1/songs", to: "api/v1/songs#create"
-  patch "/api/v1/songs/:id", to: "api/v1/songs#update"
-  delete "/api/v1/songs/:id", to: "api/v1/songs#destroy"
+  namespace :api do
+    namespace :v1 do
+      resources :songs
+    end
+  end
 end

@@ -1,4 +1,7 @@
 class Api::V1::SongsController < ApplicationController
+  before_action :authenticate_user
+  before_action :require_admin, only: [:create, :update, :destroy]
+
   def index
     render json: Song.all
   end
@@ -8,7 +11,7 @@ class Api::V1::SongsController < ApplicationController
   end
 
   def create
-    render json: Song.create(song_params)
+    render json: Song.create(song_params) 
   end
 
   def update
