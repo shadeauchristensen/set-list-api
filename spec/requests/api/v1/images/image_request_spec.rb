@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe "Images Endpoint" do
   describe "happy path" do
     it "can retrieve an image for a specific artist specific artist" do
+      # This line allows us to test the real connection to the Pexels API instead of stubbing it
       WebMock.allow_net_connect!
       
       get "/api/v1/images?artist=The%20Beatles"
