@@ -75,4 +75,8 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.filter_sensitive_data('<PEXELS_API_KEY>') { Rails.application.credentials.pexels[:key] }
   config.configure_rspec_metadata!
+  config.before_record do |i|
+    i.response.body.force_encoding('UTF-8')
+  end
 end
+

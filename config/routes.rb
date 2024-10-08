@@ -11,7 +11,8 @@ Rails.application.routes.draw do
       resources :artists, only: [:index, :show] do
         resources :songs, only: [:index, :create], controller: "artist_songs"
       end
-      resources :images, only: [:index], action: "show"
+      resources :images, only: :index, action: "show"
+      resources :videos, only: :index, action: "show"
     end
   end
 
