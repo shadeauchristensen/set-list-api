@@ -2,7 +2,10 @@ require "rails_helper"
 
 RSpec.describe "Videos Endpoint" do
   describe "happy path" do
-    it "can retrieve a video for a specific artist" do
+    it "can retrieve a video for a specific artist", :vcr do
+      # This test uses VCR. Notice the :vcr flag in the test line above
+      # A fixture has been generated with the description of this test as a file name
+
       get "/api/v1/videos?artist=The%20Beatles"
 
       expect(response).to be_successful

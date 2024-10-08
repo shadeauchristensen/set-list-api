@@ -2,7 +2,11 @@ require "rails_helper"
 
 RSpec.describe "Images Endpoint" do
   describe "happy path" do
-    it "can retrieve an image for a specific artist specific artist", :vcr do
+    it "can retrieve an image for a specific artist specific artist" do
+      json_response = File.read('spec/fixtures/beatles_artist_query.json')
+      stub_request(:get, "https://api.pexels.com/v1/search?query=The%20Beatles")
+        .to_return(status: 200, body: json_response)
+        
       get "/api/v1/images?artist=The%20Beatles"
 
       expect(response).to be_successful
