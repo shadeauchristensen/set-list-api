@@ -1,4 +1,6 @@
 class Api::V1::SongsController < ApplicationController
+  before_action :authenticate_user
+
   def index
     render json: Song.all
   end
@@ -24,4 +26,5 @@ class Api::V1::SongsController < ApplicationController
   def song_params
     params.require(:song).permit(:title, :length, :play_count )
   end
+
 end
