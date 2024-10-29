@@ -16,12 +16,12 @@ RSpec.describe "Songs for an Artist Endpoings" do
 
     expect(response).to be_successful
 
-    songs = JSON.parse(response.body, symbolize_names: true)
+    songs = JSON.parse(response.body, symbolize_names: true)[:data]
 
     expect(songs.count).to eq(3)
 
     songs.each do |song|
-      expect(song[:id]).to_not eq(@other_song.id)
+      expect(song[:id]).to_not eq(@other_song.id.to_s)
     end
   end
 

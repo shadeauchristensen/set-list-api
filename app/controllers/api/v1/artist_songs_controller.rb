@@ -1,14 +1,14 @@
 class Api::V1::ArtistSongsController < ApplicationController
   def index
     artist = Artist.find(params[:artist_id])
-    render json: SongSerializer.format_songs(artist.songs)
+    render json: SongSerializer.new(artist.songs)
   end
 
   def create
     artist = Artist.find(params[:artist_id])
     song = artist.songs.create(song_params)
 
-    render json: SongSerializer.format_song(song), status: 201
+    render json: SongSerializer.new(song), status: 201
   end
 
   private

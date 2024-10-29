@@ -14,22 +14,22 @@ RSpec.describe "Songs endpoints" do
 
     expect(response).to be_successful
 
-    songs = JSON.parse(response.body, symbolize_names: true)
+    songs = JSON.parse(response.body, symbolize_names: true)[:data]
     expect(songs.count).to eq(3)
 
     songs.each do |song|
 
       expect(song).to have_key(:id)
-      expect(song[:id]).to be_an(Integer)
+      expect(song[:id]).to be_an(String)
 
-      expect(song).to have_key(:title)
-      expect(song[:title]).to be_a(String)
+      expect(song[:attributes]).to have_key(:title)
+      expect(song[:attributes][:title]).to be_a(String)
 
-      expect(song).to have_key(:length)
-      expect(song[:length]).to be_an(Integer)
+      expect(song[:attributes]).to have_key(:length)
+      expect(song[:attributes][:length]).to be_an(Integer)
 
-      expect(song).to have_key(:play_count)
-      expect(song[:play_count]).to be_an(Integer)
+      expect(song[:attributes]).to have_key(:play_count)
+      expect(song[:attributes][:play_count]).to be_an(Integer)
     end
   end
 
@@ -40,19 +40,19 @@ RSpec.describe "Songs endpoints" do
 
     expect(response).to be_successful
 
-    song_response = JSON.parse(response.body, symbolize_names: true)
+    song_response = JSON.parse(response.body, symbolize_names: true)[:data]
 
     expect(song_response).to have_key(:id)
-    expect(song_response[:id]).to eq(song_1.id)
+    expect(song_response[:id]).to eq(song_1.id.to_s)
 
-    expect(song_response).to have_key(:title)
-    expect(song_response[:title]).to eq(song_1.title)
+    expect(song_response[:attributes]).to have_key(:title)
+    expect(song_response[:attributes][:title]).to eq(song_1.title)
 
-    expect(song_response).to have_key(:length)
-    expect(song_response[:length]).to eq(song_1.length)
+    expect(song_response[:attributes]).to have_key(:length)
+    expect(song_response[:attributes][:length]).to eq(song_1.length)
 
-    expect(song_response).to have_key(:play_count)
-    expect(song_response[:play_count]).to eq(song_1.play_count)
+    expect(song_response[:attributes]).to have_key(:play_count)
+    expect(song_response[:attributes][:play_count]).to eq(song_1.play_count)
   end
 
   it "can create a new song" do
@@ -88,7 +88,7 @@ RSpec.describe "Songs endpoints" do
 
     expect(response).to be_successful
 
-    song_response = JSON.parse(response.body, symbolize_names: true)
+    song_response = JSON.parse(response.body, symbolize_names: true)[:data][:attributes]
     expect(song_response[:length]).to eq(song_update_params[:length])
 
     expect(updated_song.length).to eq(song_update_params[:length])
