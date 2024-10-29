@@ -21,7 +21,6 @@ prince.songs.create!(title: "Raspberry Beret", length: 345, play_count: 34)
 prince.songs.create!(title: "Purple Rain", length: 524, play_count: 19)
 
 rtj.songs.create!(title: "Legend Has It", length: 2301, play_count: 2300000)
-rtj.songs.create!(title: "Talk to Me", length: 2301, play_count: 2300000)
 
 caamp.songs.create!(title: "26", length: 940, play_count: 150000)
 caamp.songs.create!(title: "Vagabond", length: 240, play_count: 120000)
