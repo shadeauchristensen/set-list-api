@@ -1,31 +1,37 @@
-# Set List Tutorial
+# SQL & AR Workshop
 
-
-This repository serves as an in-class project for Turing's Mod 2 BE program. Through working on this tutorial, students will gain an understanding of and practice the following topics (among others): 
-* Model testing
-* Migrations
-* Request testing
-* MVC
-* ActiveRecord & SQL
-* Serializers
-* Error Handling
-* API Consumption
 ## Setup
-
-Clone (you don't need to fork) this repo to your local. Then, run the following commands in Terminal: 
-```
+```bash
 bundle install
 rails db:{drop,create,migrate,seed}
 ```
 
-You should then be able to access the databases called `set_list_development` and `set_list_test`. 
+## Warm Up
 
-## How to Use
-This application starts with schema and corresponding tests for `Songs`, and then later `Artists` as well. Throughout classes in mod 2, students will be asked to work on adding various features to this application. Students are welcome to use the `main` branch of this repo, and add to it on their own machines. There is no need to submit any pull requests to the original repo, as this is a practice application. 
+Write a method that will return all Artists with Songs with at least 1,000,000 plays.
 
-Students can also check out the branches in this repo to visit the code at different points in time. Lesson plans will indicate which branches will need to be used.
+Use TDD to write this method. First decide which model you'd like to define the method in and whether it is a class or instance method.
 
-### Warning
-Note: ___we don't recommend **forking** this repo___, as there are many branches that you'll lose access to if you fork. Since this is a tutorial, you can reference the many branches in this repo for the class you're currently working on. Forking will not bring these branches with your forked copy. 
+Then start writing your test. Call the method defined in `spec/helper_methods.rb` to populate your test with data.
 
-Also, this tutorial is most useful going class-by-class, not necessarily done in addition to any intermission work. If you have context/prior knowleddge for the topics explored in this repository, you can use it to practice those topics. Generally, we advise students to wait until the topic comes up in a project or class to explore the branches of this repo.
+Once you have your test, start writing the method.
+
+## Practice Problems
+
+Each of these problems has tests created for you. You will need to define the method.
+
+### Set 1 - As a Class
+
+We will work on these problems in Breakout Rooms. Then we will come together and discuss as a class.
+
+1. `spec/models/song_spec.rb:8` - Get a unique list of all Songs on all playlists. 
+1. `spec/models/artist_spec.rb:38` - Get a unique list of all the Artists on all Playlists created after Jan 1, 2020. 
+1. `spec/models/artist_spec.rb:23` - Get a list of all Playlist that have songs from a specific Artist ordered alphabetically by the Playlist name 
+
+### Set 2 - Choose your own Adventure
+
+Pick one of the following problems to work on. You will split in to groups to work on your chosen problem. Then we will review each problem as a class. They are listed from least to most difficult.
+
+1. `spec/models/artist_spec.rb:44` - Get the 3 Artists with the highest total play_counts of all of their songs. This problem will require you to use joining, grouping, and aggregating.
+1. `spec/models/playlist_spec.rb:10` - Get the Playlist with the longest total length. This problem will also require you to use joining, grouping, and aggregating. It may be slightly more challenging than the previous problem since it starts from the Playlist model which we haven't seen yet.
+1. `spec/models/artist_spec.rb:54` - Get all Artists with Songs on 3 different Playlists. This problem is a step up in difficulty and may require you to use concepts that we haven't discussed in class.
