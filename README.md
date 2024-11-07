@@ -18,7 +18,7 @@ Once you have your test, start writing the method.
 
 ## Practice Problems
 
-Each of these problems has tests created for you. You will need to define the method.
+Each of these problems has tests created for you. You will need to define the method. Each test is skipped, so unskip each test as you work through the problems. 
 
 ### Set 1 - As a Class
 
