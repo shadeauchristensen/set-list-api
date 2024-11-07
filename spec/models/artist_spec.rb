@@ -20,7 +20,7 @@ RSpec.describe Artist do
     end
 
     describe "#playlists_featured_on" do
-      xit "returns all playlists that have songs from this artist" do
+      it "returns all playlists that have songs from this artist" do
         load_test_data
 
         Playlist.create!(name: "Walking")
@@ -35,24 +35,30 @@ RSpec.describe Artist do
     end
 
     describe ".on_playlist_created_after" do
-      xit "returns all Artists on all playlists created after a given date" do
+      it "returns all Artists on all playlists created after a given date" do
         expect(Artist.on_playlist_created_after("01/01/2020").sort).to eq([@prince, @billie, @caamp].sort)
       end
     end
     
     describe "#top_by_total_plays" do
-      xit "returns the top artists with the highest total play counts" do
+      it "returns the top artists with the highest total play counts" do
         expect(Artist.top_by_total_plays(3).sort).to eq([@rtj, @billie, @lcd].sort)
       end
 
-      xit "can limit how many artists are returned" do
+      it "can limit how many artists are returned" do
         expect(Artist.top_by_total_plays(1)).to eq([@rtj])
       end
     end
     
     describe ".on_three_playlists" do
-      xit "returns any artists that have songs on 3 playlists" do
+      it "returns any artists that have songs on 3 playlists" do
         expect(Artist.on_three_playlists).to eq([@prince])
+      end
+    end
+
+    describe ".with_song_play_count warm-up method" do
+      it "returns artists with songs with a play_count over a given threshold" do
+        expect(Artist.with_song_play_count(1_000_000).sort).to eq([@rtj, @billie, @lcd].sort)
       end
     end
   end
