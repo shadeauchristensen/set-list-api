@@ -1,0 +1,89 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/julieteyraud/Turing/mod2/lessons/set-list-api/app/models/artist.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/julieteyraud/Turing/mod2/lessons/set-list-api/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/julieteyraud/Turing/mod2/lessons/set-list-api/spec/models/song_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          2,
+          null,
+          null,
+          1,
+          1,
+          2,
+          2,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/julieteyraud/Turing/mod2/lessons/set-list-api/app/models/song.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          3,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          2,
+          2,
+          null,
+          0,
+          null,
+          null,
+          null
+        ]
+      }
+    },
+    "timestamp": 1730136526
+  }
+}
