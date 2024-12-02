@@ -1,10 +1,10 @@
 class Api::V1::SongsController < ApplicationController
   def index
-    render json: SongSerializer.format_songs(Song.all)
+    render json: SongSerializer.new(Song.all)
   end
 
   def show
-    render json: SongSerializer.format_song(Song.find(params[:id]))
+    render json: SongSerializer.new(Song.find(params[:id]))
   end
 
   def create
@@ -17,7 +17,7 @@ class Api::V1::SongsController < ApplicationController
     song = Song.find(params[:id])
     song.update(song_params)
 
-    render json: SongSerializer.format_song(song)
+    render json: SongSerializer.new(song)
   end
 
   def destroy

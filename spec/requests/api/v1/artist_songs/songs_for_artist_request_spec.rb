@@ -16,7 +16,7 @@ RSpec.describe "Songs for an Artist Endpoings" do
 
     expect(response).to be_successful
 
-    songs = JSON.parse(response.body, symbolize_names: true)
+    songs = JSON.parse(response.body, symbolize_names: true)[:data]
 
     expect(songs.count).to eq(3)
 
