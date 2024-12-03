@@ -2,9 +2,10 @@ class Api::V1::ImagesController < ApplicationController
   def show
     artist = params[:artist]
     conn = Faraday.new(url: "https://api.unsplash.com") 
+    # Faraday.get()
     
     response = conn.get("/search/photos", { query: artist, client_id: Rails.application.credentials.unsplash[:key] })
-
+    require 'pry'; binding.pry
     json = JSON.parse(response.body, symbolize_names: true)
     first_photo = json[:results][0]
 
