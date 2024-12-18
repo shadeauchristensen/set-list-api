@@ -7,3 +7,10 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+Song.destroy_all
+
+Song.create!(title: 'Raspberry Beret', length: 345, play_count: 34)
+Song.create!(title: 'Purple Rain', length: 524, play_count: 19)
+Song.create!(title: 'Legend Has It', length: 2301, play_count: 2300000)
+
+puts "Seeded successfully"
